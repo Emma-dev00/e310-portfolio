@@ -6,17 +6,20 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="w-full bg-transparent">
+    <header className="w-full bg-[#0F1B3D]">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <Link href="/" className="flex items-center gap-3">
-          <span className="inline-flex h-7 w-7 items-center justify-center rounded-sm text-white">
-            <svg width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
-              <path d="M1 2h14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-              <path d="M1 6h14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-              <path d="M1 10h14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-            </svg>
-          </span>
-          <span className="text-2xl font-extrabold tracking-tight text-white">E310</span>
+        <Link href="/" className="inline-flex items-center text-2xl font-bold tracking-tight text-white" aria-label="E310">
+          <svg
+            className="mr-0.5 h-[18px] w-[15px] shrink-0 fill-current text-white"
+            viewBox="0 0 15 18"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <rect width="15" height="3.6" rx="0.5" />
+            <rect y="7.2" width="15" height="3.6" rx="0.5" />
+            <rect y="14.4" width="15" height="3.6" rx="0.5" />
+          </svg>
+          <span>310</span>
         </Link>
 
         <div className="hidden items-center gap-6 text-sm md:flex">
@@ -32,16 +35,16 @@ export default function Navbar() {
 
           <button
             onClick={() => setOpen(!open)}
-            className="ml-2 inline-flex items-center justify-center rounded-md bg-white/0 p-2 text-[#0F1B3D] md:hidden"
+            className="ml-2 inline-flex items-center justify-center rounded-md bg-white/0 p-2 text-white md:hidden"
             aria-label="Toggle menu"
           >
             {open ? (
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M6 6L18 18M6 18L18 6" stroke="#0F1B3D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M6 6L18 18M6 18L18 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             ) : (
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M3 6h18M3 12h18M3 18h18" stroke="#0F1B3D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             )}
           </button>

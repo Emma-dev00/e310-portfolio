@@ -77,10 +77,10 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Case Studies (dark) */}
+      {/* Featured Projects (dark) */}
       <section className="mt-16 bg-[#0F1B3D] py-16 text-white">
         <div className="mx-auto max-w-6xl">
-          <h2 className="mb-6 text-2xl font-semibold">Case Studies</h2>
+          <h2 className="mb-6 text-2xl font-semibold">Featured Projects</h2>
           <div className="grid gap-6 md:grid-cols-2">
             {CASES.map((c) => (
               <CaseStudyCard key={c.title} title={c.title} excerpt={c.excerpt} />
