@@ -38,7 +38,7 @@ export default async function Home() {
   return (
     <div className="mx-auto w-full max-w-6xl px-6">
       {/* Hero (dark navy) */}
-      <section className="bg-linear-to-b from-[#0F1B3D] to-[#FBFAF6] text-white">
+      <section className="bg-gradient-to-b from-[#0F1B3D] to-[#FBFAF6] text-white">
         <div className="mx-auto max-w-6xl py-20">
           <div className="grid gap-8 lg:grid-cols-2">
             <div className="space-y-6 px-4">
