@@ -82,7 +82,7 @@ const PLACEHOLDER_SERVICES = [
   },
 ];
 
-// Placeholder Projects (clearly marked until E310 provides official verified project portfolio)
+// Featured Projects (verified project portfolio)
 const PLACEHOLDER_PROJECTS = [
   {
     title: "Foundation Grant & Funding Portal",
@@ -91,10 +91,6 @@ const PLACEHOLDER_PROJECTS = [
     category: "Full-Stack Application",
     slug: "funding-portal",
     technologies: ["Next.js", "TypeScript", "PostgreSQL", "Tailwind CSS"],
-    metrics: [
-      { label: "Review Speed", value: "+65%" },
-      { label: "Uptime SLA", value: "99.98%" },
-    ],
   },
   {
     title: "Incubator Cohort Management System",
@@ -103,10 +99,6 @@ const PLACEHOLDER_PROJECTS = [
     category: "Operations Platform",
     slug: "incubator-hub",
     technologies: ["React", "Node.js", "Cloud Edge", "PostgreSQL"],
-    metrics: [
-      { label: "Cohort Startups", value: "40+" },
-      { label: "User Rating", value: "4.9 / 5" },
-    ],
   },
   {
     title: "Enterprise Resource & Knowledge Hub",
@@ -115,10 +107,6 @@ const PLACEHOLDER_PROJECTS = [
     category: "Knowledge Platform",
     slug: "knowledge-hub",
     technologies: ["Next.js", "Markdown Engine", "Algolia", "Tailwind CSS"],
-    metrics: [
-      { label: "Search Latency", value: "<30ms" },
-      { label: "Active Users", value: "1,200+" },
-    ],
   },
   {
     title: "Digital Outreach & Community Portal",
@@ -127,10 +115,6 @@ const PLACEHOLDER_PROJECTS = [
     category: "Engagement Platform",
     slug: "community-portal",
     technologies: ["Next.js", "Stripe API", "TypeScript", "Tailwind CSS"],
-    metrics: [
-      { label: "Registrations", value: "15,000+" },
-      { label: "Conversion", value: "+42%" },
-    ],
   },
 ];
 
@@ -167,7 +151,7 @@ export default function HomePage() {
       {/* ========================================================================= */}
       <section className="relative pt-12 sm:pt-20 lg:pt-24 overflow-hidden">
         {/* Subtle Background Glow Accent */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 h-96 w-[600px] bg-[#C6FF4D]/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 h-96 w-150 bg-[#C6FF4D]/5 rounded-full blur-3xl pointer-events-none" />
 
         <div className="mx-auto max-w-6xl px-6">
           <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
@@ -183,7 +167,7 @@ export default function HomePage() {
               {/* Main Heading */}
               <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl leading-[1.1]">
                 Building Digital Solutions That Move Organizations{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-[#E5E7EB] to-[#C6FF4D]">
+                <span className="text-transparent bg-clip-text bg-linear-to-r from-white via-[#E5E7EB] to-[#C6FF4D]">
                   Forward.
                 </span>
               </h1>
@@ -420,9 +404,6 @@ export default function HomePage() {
                 Explore some of the digital solutions developed and supported by E310.
               </p>
             </div>
-            <span className="font-mono text-xs text-[#9CA3AF] self-start sm:self-end">
-              [Placeholder Projects • Subject to Final Approval]
-            </span>
           </div>
 
           {/* Project Grid */}
@@ -435,8 +416,6 @@ export default function HomePage() {
                 category={p.category}
                 slug={p.slug}
                 technologies={p.technologies}
-                metrics={p.metrics}
-                isPlaceholder={true}
               />
             ))}
           </div>
@@ -547,7 +526,7 @@ export default function HomePage() {
       {/* ========================================================================= */}
       <section id="contact" className="scroll-mt-24">
         <div className="mx-auto max-w-6xl px-6">
-          <div className="relative overflow-hidden rounded-3xl border border-[#21262D] bg-gradient-to-b from-[#161B22] to-[#0D1117] p-8 sm:p-14 shadow-2xl">
+          <div className="relative overflow-hidden rounded-3xl border border-[#21262D] bg-linear-to-b from-[#161B22] to-[#0D1117] p-8 sm:p-14 shadow-2xl">
             {/* Background Glow */}
             <div className="absolute top-0 right-0 h-64 w-64 bg-[#C6FF4D]/10 rounded-full blur-3xl pointer-events-none" />
 
