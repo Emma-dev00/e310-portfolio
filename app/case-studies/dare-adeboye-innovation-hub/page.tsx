@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import image from "next/image"
 
 export const metadata: Metadata = {
   title: "Dare Adeboye Innovation Hub | E310 Case Study",
@@ -42,9 +43,9 @@ const technologies = [
 ];
 
 const visualSections = [
-  ["Workspace Discovery", "Add the actual workspace discovery screenshot when available."],
+  ["Workspace Discovery", "Add the actual workspace discovery screenshot when available.", "/images/ProjectGallery.jpg"],
   ["Workspace Details", "Add the actual workspace details screenshot when available."],
-  ["Rental/Booking", "Add the actual rental or booking screenshot when available."],
+  ["Rental/Booking", "Add the actual rental or booking screenshot when available.","/images/ProjectGallery.jpg"],
   ["Payment", "Add the actual payment screenshot when available."],
   ["Confirmation", "Add the actual confirmation screenshot when available."],
   ["Dashboard/Admin", "Add the actual dashboard or admin screenshot when available."],
@@ -180,9 +181,19 @@ export default function DareAdeboyeInnovationHubCaseStudy() {
         <div className="mx-auto max-w-6xl px-6 py-20 sm:py-28">
           <SectionHeading title="Inside the Platform" />
           <div className="mt-12 grid gap-4 md:grid-cols-12">
-            {visualSections.map(([title, description], index) => (
+            {visualSections.map(([title, description, image], index) => (
               <div key={title} className={index === 0 || index === 3 ? "md:col-span-7" : "md:col-span-5"}>
-                <AssetNotice title={title} description={description} />
+                {image ? (
+                  <Image
+                    src={image}
+                    alt={title}
+                    width={600}
+                    height={400}
+                    className="rounded-2xl object-cover w-full h-auto"
+                    /
+                ):(
+                    <AssetNotice title={title} description={description}/>
+                ){"}"}
               </div>
             ))}
           </div>
