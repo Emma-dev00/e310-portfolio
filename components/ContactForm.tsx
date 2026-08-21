@@ -57,8 +57,7 @@ export default function ContactForm() {
           <input
             type="text"
             required
-            placeholder="e.g. Samuel Adeleke"
-            className="w-full rounded-lg border border-[#21262D] bg-[#161B22] px-3.5 py-2.5 text-xs text-white placeholder-[#9CA3AF]/40 focus:border-[#C6FF4D] focus:outline-none"
+            className="w-full rounded-lg border border-[#21262D] bg-[#161B22] px-3.5 py-2.5 text-xs text-white focus:border-[#C6FF4D] focus:outline-none"
           />
         </div>
         <div className="space-y-1.5">
@@ -68,8 +67,7 @@ export default function ContactForm() {
           <input
             type="email"
             required
-            placeholder="e.g. samuel@organization.org"
-            className="w-full rounded-lg border border-[#21262D] bg-[#161B22] px-3.5 py-2.5 text-xs text-white placeholder-[#9CA3AF]/40 focus:border-[#C6FF4D] focus:outline-none"
+            className="w-full rounded-lg border border-[#21262D] bg-[#161B22] px-3.5 py-2.5 text-xs text-white focus:border-[#C6FF4D] focus:outline-none"
           />
         </div>
       </div>
@@ -81,8 +79,7 @@ export default function ContactForm() {
           </label>
           <input
             type="text"
-            placeholder="e.g. Rechall Hub / Partner"
-            className="w-full rounded-lg border border-[#21262D] bg-[#161B22] px-3.5 py-2.5 text-xs text-white placeholder-[#9CA3AF]/40 focus:border-[#C6FF4D] focus:outline-none"
+            className="w-full rounded-lg border border-[#21262D] bg-[#161B22] px-3.5 py-2.5 text-xs text-white focus:border-[#C6FF4D] focus:outline-none"
           />
         </div>
         <div className="space-y-1.5">
@@ -106,8 +103,7 @@ export default function ContactForm() {
         <textarea
           required
           rows={3}
-          placeholder="Briefly describe your objectives, challenges, or system requirements..."
-          className="w-full rounded-lg border border-[#21262D] bg-[#161B22] px-3.5 py-2.5 text-xs text-white placeholder-[#9CA3AF]/40 focus:border-[#C6FF4D] focus:outline-none"
+          className="w-full rounded-lg border border-[#21262D] bg-[#161B22] px-3.5 py-2.5 text-xs text-white focus:border-[#C6FF4D] focus:outline-none"
         />
       </div>
 

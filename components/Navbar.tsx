@@ -2,12 +2,10 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,11 +14,6 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  // Close mobile menu on route change
-  useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
 
   const navLinks = [
     { name: "Home", href: "/" },
@@ -42,6 +35,7 @@ export default function Navbar() {
         {/* Left: Brand Wordmark */}
         <Link
           href="/"
+          onClick={() => setOpen(false)}
           className="group flex items-center gap-2 text-xl font-bold tracking-tight text-white transition-opacity hover:opacity-90"
           aria-label="E310 Tech Agency"
         >
@@ -114,6 +108,7 @@ export default function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
+                onClick={() => setOpen(false)}
                 className="py-1 text-[#E5E7EB] transition-colors hover:text-[#C6FF4D]"
               >
                 {link.name}
@@ -122,6 +117,7 @@ export default function Navbar() {
             <div className="pt-3 border-t border-[#21262D]">
               <Link
                 href="/#contact"
+                onClick={() => setOpen(false)}
                 className="flex w-full items-center justify-center rounded-full bg-[#C6FF4D] py-3 text-sm font-semibold text-[#0D1117] transition-colors hover:bg-[#b5f336]"
               >
                 Let&apos;s Work Together

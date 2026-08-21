@@ -7,7 +7,6 @@ interface ServiceCardProps {
   icon?: React.ReactNode;
   tags?: string[];
   linkHref?: string;
-  isPlaceholder?: boolean;
 }
 
 export default function ServiceCard({
@@ -16,13 +15,11 @@ export default function ServiceCard({
   icon,
   tags = [],
   linkHref = "/#contact",
-  isPlaceholder = false,
 }: ServiceCardProps) {
   return (
     <div className="group relative flex flex-col justify-between rounded-2xl border border-[#21262D] bg-[#161B22] p-7 transition-all duration-300 hover:-translate-y-1 hover:border-[#C6FF4D]/50 hover:shadow-[0_8px_30px_rgba(0,0,0,0.4)]">
       <div>
-        {/* Icon & Placeholder Badge */}
-        <div className="mb-5 flex items-center justify-between">
+        <div className="mb-5 flex items-center">
           <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-[#21262D] bg-[#0D1117] text-[#C6FF4D] transition-colors group-hover:border-[#C6FF4D]/40 group-hover:bg-[#C6FF4D]/10">
             {icon || (
               <svg
@@ -41,11 +38,6 @@ export default function ServiceCard({
               </svg>
             )}
           </div>
-          {isPlaceholder && (
-            <span className="rounded border border-[#21262D] bg-[#0D1117] px-2 py-0.5 text-[10px] font-mono text-[#9CA3AF]">
-              [Placeholder]
-            </span>
-          )}
         </div>
 
         {/* Title & Description */}

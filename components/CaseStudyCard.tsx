@@ -6,9 +6,8 @@ interface CaseStudyCardProps {
   excerpt: string;
   category?: string;
   technologies?: string[];
-  metrics?: { label: string; value: string }[];
-  isPlaceholder?: boolean;
-  slug?: string;
+  isEmpty?: boolean;
+  href?: string;
 }
 
 export default function CaseStudyCard({
@@ -16,10 +15,13 @@ export default function CaseStudyCard({
   excerpt,
   category = "Digital Solution",
   technologies = ["Next.js", "TypeScript", "Tailwind CSS"],
-  metrics = [],
-  isPlaceholder = false,
-  slug = "funding-portal",
+  isEmpty = false,
+  href = "/#contact",
 }: CaseStudyCardProps) {
+  if (isEmpty) {
+    return <article className="min-h-80 rounded-2xl border border-[#21262D] bg-[#161B22]" aria-hidden="true" />;
+  }
+
   return (
     <article className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-[#21262D] bg-[#161B22] transition-all duration-300 hover:-translate-y-1 hover:border-[#C6FF4D]/50 hover:shadow-[0_12px_36px_rgba(0,0,0,0.5)]">
       {/* Top Visual Section with Category Badge */}
@@ -70,7 +72,7 @@ export default function CaseStudyCard({
         {/* Bottom Link Action */}
         <div className="mt-6 pt-4 border-t border-[#21262D]/60 flex items-center justify-between">
           <Link
-            href="/#contact"
+            href={href}
             className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#C6FF4D] transition-all group-hover:gap-2.5"
           >
             <span>View Project</span>

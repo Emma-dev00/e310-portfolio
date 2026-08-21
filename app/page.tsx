@@ -4,9 +4,9 @@ import ServiceCard from "../components/ServiceCard";
 import CaseStudyCard from "../components/CaseStudyCard";
 import Testimonial from "../components/Testimonial";
 import ContactForm from "../components/ContactForm";
+import CoreSuiteDiagram from "../components/CoreSuiteDiagram";
 
-// Placeholder Services (clearly marked until E310 provides official finalized service list)
-const PLACEHOLDER_SERVICES = [
+const SERVICES = [
   {
     title: "Custom Web & Application Development",
     description:
@@ -24,7 +24,7 @@ const PLACEHOLDER_SERVICES = [
     title: "System Architecture & Cloud Infrastructure",
     description:
       "Scalable database design, API integrations, and cloud hosting architecture built for high availability and security.",
-    tags: ["PostgreSQL", "Cloud Edge", "REST / GraphQL"],
+    tags: ["PostgreSQL", "Cloud Edge", "REST API"],
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
@@ -46,17 +46,6 @@ const PLACEHOLDER_SERVICES = [
     ),
   },
   {
-    title: "Ongoing Technical Support & SLA",
-    description:
-      "Reliable troubleshooting, maintenance, software updates, and performance monitoring to keep systems running smoothly.",
-    tags: ["Uptime Monitoring", "Bug Resolution", "Maintenance"],
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
-      </svg>
-    ),
-  },
-  {
     title: "Workflow Automation & Data Pipelines",
     description:
       "Automating repetitive administrative processes, data syncing across services, and business intelligence reporting.",
@@ -68,80 +57,45 @@ const PLACEHOLDER_SERVICES = [
       </svg>
     ),
   },
-  {
-    title: "Technical Advisory & Roadmap Strategy",
-    description:
-      "Guiding leadership teams on technology choices, feasibility assessments, security standards, and implementation plans.",
-    tags: ["Tech Advisory", "Feasibility", "Roadmapping"],
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10" />
-        <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" />
-      </svg>
-    ),
-  },
 ];
 
-// Featured Projects (verified project portfolio)
-const PLACEHOLDER_PROJECTS = [
+// Featured Projects
+const PROJECTS = [
   {
     title: "Foundation Grant & Funding Portal",
     excerpt:
       "Built a secure, streamlined digital portal to manage grant applications, review workflows, and milestone disbursements.",
     category: "Full-Stack Application",
-    slug: "funding-portal",
     technologies: ["Next.js", "TypeScript", "PostgreSQL", "Tailwind CSS"],
+    isEmpty: true,
   },
   {
     title: "Incubator Cohort Management System",
     excerpt:
       "Centralized tracker for cohort startups, mentorship schedules, milestone deliverables, and progress reporting.",
     category: "Operations Platform",
-    slug: "incubator-hub",
     technologies: ["React", "Node.js", "Cloud Edge", "PostgreSQL"],
+    isEmpty: true,
   },
   {
     title: "Enterprise Resource & Knowledge Hub",
     excerpt:
       "A fast, searchable documentation and digital asset repository for distributed organizational teams and volunteers.",
     category: "Knowledge Platform",
-    slug: "knowledge-hub",
     technologies: ["Next.js", "Markdown Engine", "Algolia", "Tailwind CSS"],
+    isEmpty: true,
   },
   {
-    title: "Digital Outreach & Community Portal",
+    title: "Dare Adeboye Innovation Hub",
     excerpt:
-      "High-engagement web platform enabling event registration, donation processing, and community communication.",
-    category: "Engagement Platform",
-    slug: "community-portal",
-    technologies: ["Next.js", "Stripe API", "TypeScript", "Tailwind CSS"],
+      "A secure Web Platform that enables users to discover, rent, and pay for office workspace online.",
+    category: "Workspace Rental and Payment Platform",
+    technologies: ["Next.js", "TypeScript", "Online Payments", "PostgreSQL"],
+    href: "/case-studies/dare-adeboye-innovation-hub",
   },
 ];
 
-// Placeholder Testimonials
-const PLACEHOLDER_TESTIMONIALS = [
-  {
-    quote:
-      "E310 delivered our portal ahead of schedule. Their technical rigor, transparent communication, and attention to detail made a massive difference.",
-    author: "Program Director",
-    role: "Innovation Incubator Hub",
-    organization: "Rechall Hub",
-  },
-  {
-    quote:
-      "Working with E310 felt like having an elite in-house engineering team. They resolved complex system bottlenecks and gave us a platform we can truly scale.",
-    author: "Operations Lead",
-    role: "Venture & Community Initiatives",
-    organization: "Partner Organization",
-  },
-  {
-    quote:
-      "From user interface design to reliable ongoing technical support, E310 has been an indispensable technology partner for our digital initiatives.",
-    author: "Technology Coordinator",
-    role: "Digital Transformation",
-    organization: "Community Foundation",
-  },
-];
+const VOICE_CARDS = ["voice-1", "voice-2", "voice-3"];
 
 export default function HomePage() {
   return (
@@ -149,7 +103,7 @@ export default function HomePage() {
       {/* ========================================================================= */}
       {/* 1. HERO SECTION */}
       {/* ========================================================================= */}
-      <section className="relative pt-12 sm:pt-20 lg:pt-24 overflow-hidden">
+      <section id="core-suite" className="relative pt-12 sm:pt-20 lg:pt-24 overflow-hidden">
         {/* Subtle Background Glow Accent */}
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 h-96 w-150 bg-[#C6FF4D]/5 rounded-full blur-3xl pointer-events-none" />
 
@@ -158,12 +112,6 @@ export default function HomePage() {
             
             {/* Hero Left: Copy & CTAs */}
             <div className="lg:col-span-7 space-y-6">
-              {/* Lime Accent Badge */}
-              <div className="inline-flex items-center gap-2 rounded-full border border-[#C6FF4D]/30 bg-[#C6FF4D]/10 px-3.5 py-1 text-[11px] font-mono font-semibold uppercase tracking-widest text-[#C6FF4D]">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#C6FF4D] animate-pulse" />
-                TECHNOLOGY • INNOVATION • SOLUTIONS
-              </div>
-
               {/* Main Heading */}
               <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl leading-[1.1]">
                 Building Digital Solutions That Move Organizations{" "}
@@ -193,90 +141,16 @@ export default function HomePage() {
                 </Link>
               </div>
 
-              {/* Stats/Badges Row */}
-              <div className="grid grid-cols-3 gap-4 border-t border-[#21262D] pt-6 text-left">
-                <div>
-                  <span className="block font-mono text-xl font-bold text-white">100%</span>
-                  <span className="block text-xs text-[#9CA3AF]">Custom Engineering</span>
-                </div>
-                <div>
-                  <span className="block font-mono text-xl font-bold text-[#C6FF4D]">99.9%</span>
-                  <span className="block text-xs text-[#9CA3AF]">Uptime Standard</span>
-                </div>
-                <div>
-                  <span className="block font-mono text-xl font-bold text-white">Full-Stack</span>
-                  <span className="block text-xs text-[#9CA3AF]">Design to Support</span>
-                </div>
+              <div className="border-t border-[#21262D] pt-6 text-left">
+                <h2 className="text-lg font-bold leading-snug text-white sm:text-xl">
+                  Organizations within the RECHALL HUB which E310 Tech Agency services and attends to their Technical Issues
+                </h2>
               </div>
             </div>
 
-            {/* Hero Right: Sophisticated Dark Technology UI Mockup */}
+            {/* Hero Right: E310 technology ecosystem */}
             <div className="lg:col-span-5">
-              <div className="relative rounded-2xl border border-[#21262D] bg-[#161B22] p-5 sm:p-6 shadow-2xl transition-all duration-300 hover:border-[#C6FF4D]/40">
-                {/* Header controls */}
-                <div className="flex items-center justify-between pb-4 border-b border-[#21262D]">
-                  <div className="flex items-center gap-1.5">
-                    <span className="h-3 w-3 rounded-full bg-[#21262D]" />
-                    <span className="h-3 w-3 rounded-full bg-[#21262D]" />
-                    <span className="h-3 w-3 rounded-full bg-[#21262D]" />
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="font-mono text-[10px] text-[#9CA3AF]">E310 CORE SUITE</span>
-                    <span className="h-1.5 w-1.5 rounded-full bg-[#C6FF4D] animate-ping" />
-                  </div>
-                </div>
-
-                {/* Dashboard Elements */}
-                <div className="mt-4 space-y-4 font-mono text-xs">
-                  {/* Status Banner */}
-                  <div className="rounded-xl border border-[#21262D] bg-[#0D1117] p-3.5 flex items-center justify-between">
-                    <div className="space-y-0.5">
-                      <span className="text-[10px] uppercase text-[#9CA3AF]">Production Cluster</span>
-                      <p className="font-semibold text-white">Rechall Hub</p>
-                    </div>
-                    <span className="rounded border border-[#C6FF4D]/30 bg-[#C6FF4D]/10 px-2 py-0.5 text-[10px] font-bold text-[#C6FF4D]">
-                      ONLINE
-                    </span>
-                  </div>
-
-                  {/* Metrics Graph Preview */}
-                  <div className="rounded-xl border border-[#21262D] bg-[#0D1117] p-3.5 space-y-2.5">
-                    <div className="flex items-center justify-between text-[11px]">
-                      <span className="text-[#9CA3AF]">System Throughput</span>
-                      <span className="text-[#C6FF4D] font-bold">4.8k req/sec</span>
-                    </div>
-                    {/* Visual Bar Graph */}
-                    <div className="flex items-end gap-1.5 h-12 pt-2">
-                      <div className="flex-1 rounded-t bg-[#21262D] h-5" />
-                      <div className="flex-1 rounded-t bg-[#21262D] h-7" />
-                      <div className="flex-1 rounded-t bg-[#21262D] h-6" />
-                      <div className="flex-1 rounded-t bg-[#C6FF4D]/40 h-9" />
-                      <div className="flex-1 rounded-t bg-[#C6FF4D] h-12" />
-                      <div className="flex-1 rounded-t bg-[#C6FF4D]/80 h-10" />
-                      <div className="flex-1 rounded-t bg-[#C6FF4D] h-11" />
-                    </div>
-                  </div>
-
-                  {/* Active Services List */}
-                  <div className="grid grid-cols-2 gap-2 text-[11px]">
-                    <div className="rounded-lg border border-[#21262D] bg-[#0D1117] p-2.5">
-                      <span className="text-[9px] text-[#9CA3AF] uppercase block">API Response</span>
-                      <span className="text-sm font-bold text-white">&lt; 38ms</span>
-                    </div>
-                    <div className="rounded-lg border border-[#21262D] bg-[#0D1117] p-2.5">
-                      <span className="text-[9px] text-[#9CA3AF] uppercase block">Security Grade</span>
-                      <span className="text-sm font-bold text-[#C6FF4D]">A+ SSL/TLS</span>
-                    </div>
-                  </div>
-
-                  {/* Terminal Snippet */}
-                  <div className="rounded-lg border border-[#21262D] bg-[#0D1117] p-3 text-[11px] text-[#9CA3AF]">
-                    <span className="text-[#C6FF4D]">$</span> e310 deploy --service=production<br />
-                    <span className="text-white">✓ Architecture verified: 0 vulnerabilities</span><br />
-                    <span className="text-[#C6FF4D]">✓ Live at https://e310.agency</span>
-                  </div>
-                </div>
-              </div>
+              <CoreSuiteDiagram />
             </div>
 
           </div>
@@ -299,15 +173,6 @@ export default function HomePage() {
               <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white leading-tight">
                 Technology Built Around Real Problems.
               </h2>
-              <div className="pt-2">
-                <Link
-                  href="#contact"
-                  className="inline-flex items-center gap-2 text-sm font-semibold text-[#C6FF4D] hover:underline"
-                >
-                  <span>Learn More About E310</span>
-                  <span>→</span>
-                </Link>
-              </div>
             </div>
 
             {/* Right Column: Narrative & Pillars */}
@@ -363,21 +228,17 @@ export default function HomePage() {
                 Technical solutions designed to help organizations work better.
               </p>
             </div>
-            <span className="font-mono text-xs text-[#9CA3AF] self-start sm:self-end">
-              [Placeholder Catalog • Subject to Final Scope]
-            </span>
           </div>
 
           {/* Services Grid */}
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {PLACEHOLDER_SERVICES.map((s) => (
+            {SERVICES.map((s) => (
               <ServiceCard
                 key={s.title}
                 title={s.title}
                 description={s.description}
                 icon={s.icon}
                 tags={s.tags}
-                isPlaceholder={true}
               />
             ))}
           </div>
@@ -408,73 +269,16 @@ export default function HomePage() {
 
           {/* Project Grid */}
           <div className="grid gap-6 md:grid-cols-2">
-            {PLACEHOLDER_PROJECTS.map((p) => (
+            {PROJECTS.map((p) => (
               <CaseStudyCard
                 key={p.title}
                 title={p.title}
                 excerpt={p.excerpt}
                 category={p.category}
-                slug={p.slug}
                 technologies={p.technologies}
+                isEmpty={p.isEmpty}
+                href={p.href}
               />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ========================================================================= */}
-      {/* 5. TECHNOLOGY & ARCHITECTURAL STANDARDS */}
-      {/* ========================================================================= */}
-      <section className="border-y border-[#21262D] bg-[#0D1117] py-20">
-        <div className="mx-auto max-w-6xl px-6 space-y-12">
-          <div className="text-center max-w-2xl mx-auto space-y-3">
-            <span className="font-mono text-xs uppercase tracking-widest text-[#C6FF4D]">
-              Engineering Standards
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
-              Engineered for Scale &amp; Reliability
-            </h2>
-            <p className="text-sm text-[#9CA3AF]">
-              We adhere to strict engineering principles to deliver software that is fast, accessible, and easily maintainable.
-            </p>
-          </div>
-
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {[
-              {
-                title: "Frontend Engineering",
-                tech: "Next.js • React 19 • TypeScript",
-                desc: "Server-side rendering, instant page transitions, and strict zero-layout-shift performance.",
-              },
-              {
-                title: "UI & Accessibility",
-                tech: "Tailwind CSS • WCAG 2.1 AA",
-                desc: "High-contrast geometric design systems with full keyboard navigation and screen reader support.",
-              },
-              {
-                title: "Backend & Data",
-                tech: "Node.js • PostgreSQL • Redis",
-                desc: "Type-safe database schemas, robust relational modeling, and secure authenticated endpoints.",
-              },
-              {
-                title: "Cloud & Reliability",
-                tech: "Edge CDN • Automated CI/CD",
-                desc: "Continuous integration, automated Lighthouse audits, and sub-50ms global content delivery.",
-              },
-            ].map((col, idx) => (
-              <div
-                key={idx}
-                className="rounded-2xl border border-[#21262D] bg-[#161B22] p-6 space-y-3 flex flex-col justify-between"
-              >
-                <div className="space-y-2">
-                  <span className="font-mono text-xs text-[#C6FF4D]">0{idx + 1}</span>
-                  <h3 className="text-base font-bold text-white">{col.title}</h3>
-                  <p className="font-mono text-xs text-[#C6FF4D]/90">{col.tech}</p>
-                </div>
-                <p className="text-xs text-[#9CA3AF] leading-relaxed border-t border-[#21262D] pt-3">
-                  {col.desc}
-                </p>
-              </div>
             ))}
           </div>
         </div>
@@ -500,22 +304,12 @@ export default function HomePage() {
                 Feedback from program leads and organization stakeholders.
               </p>
             </div>
-            <span className="font-mono text-xs text-[#9CA3AF] self-start sm:self-end">
-              [Sample Stakeholder Voices]
-            </span>
           </div>
 
           {/* Testimonial Cards */}
           <div className="grid gap-6 md:grid-cols-3">
-            {PLACEHOLDER_TESTIMONIALS.map((t, idx) => (
-              <Testimonial
-                key={idx}
-                quote={t.quote}
-                author={t.author}
-                role={t.role}
-                organization={t.organization}
-                isPlaceholder={true}
-              />
+            {VOICE_CARDS.map((voice) => (
+              <Testimonial key={voice} />
             ))}
           </div>
         </div>
@@ -534,9 +328,6 @@ export default function HomePage() {
               
               {/* Left Column: Contact Copy */}
               <div className="lg:col-span-5 space-y-6">
-                <div className="inline-flex items-center gap-2 rounded-full border border-[#C6FF4D]/30 bg-[#C6FF4D]/10 px-3.5 py-1 text-xs font-mono font-semibold uppercase tracking-widest text-[#C6FF4D]">
-                  START A CONVERSATION
-                </div>
                 <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white leading-tight">
                   Ready to Build Something Meaningful?
                 </h2>
@@ -544,26 +335,6 @@ export default function HomePage() {
                   Whether you need custom software, ongoing technical support, or system modernization for your organization, E310 is ready to partner with you.
                 </p>
 
-                <div className="space-y-3 pt-2 text-xs text-[#9CA3AF]">
-                  <div className="flex items-center gap-3">
-                    <span className="flex h-6 w-6 items-center justify-center rounded-md bg-[#0D1117] text-[#C6FF4D] border border-[#21262D]">
-                      ✓
-                    </span>
-                    <span>Direct technical consultation with senior engineers</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <span className="flex h-6 w-6 items-center justify-center rounded-md bg-[#0D1117] text-[#C6FF4D] border border-[#21262D]">
-                      ✓
-                    </span>
-                    <span>Tailored scope, timeline, and SLA estimation</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <span className="flex h-6 w-6 items-center justify-center rounded-md bg-[#0D1117] text-[#C6FF4D] border border-[#21262D]">
-                      ✓
-                    </span>
-                    <span>Aligned with Rechall Hub standards</span>
-                  </div>
-                </div>
               </div>
 
               {/* Right Column: Structured Inquiry Form */}
