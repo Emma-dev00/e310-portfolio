@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import image from "next/image"
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Dare Adeboye Innovation Hub | E310 Case Study",
@@ -33,22 +33,13 @@ const features = [
   ["Secure User Experience", "The application is designed with security considerations around user and payment-related information."],
 ];
 
-const technologies = [
-  ["Frontend", "Editable: technology not specified in project files"],
-  ["Backend", "Editable: technology not specified in project files"],
-  ["Database", "Editable: technology not specified in project files"],
-  ["Payment", "Editable: provider not specified in project files"],
-  ["Authentication", "Editable: technology not specified in project files"],
-  ["Hosting", "Editable: platform not specified in project files"],
-];
-
 const visualSections = [
-  ["Workspace Discovery", "Add the actual workspace discovery screenshot when available.", "/images/ProjectGallery.jpg"],
-  ["Workspace Details", "Add the actual workspace details screenshot when available."],
-  ["Rental/Booking", "Add the actual rental or booking screenshot when available.","/images/ProjectGallery.jpg"],
-  ["Payment", "Add the actual payment screenshot when available."],
-  ["Confirmation", "Add the actual confirmation screenshot when available."],
-  ["Dashboard/Admin", "Add the actual dashboard or admin screenshot when available."],
+  ["Workspace Discovery", "Add the actual workspace discovery screenshot when available.", "/images/Workspace-discovery.jpg.jpg"],
+  ["Workspace Details", "Add the actual workspace details screenshot when available.", "/images/work-details.jpg"],
+  ["Rental/Booking", "Add the actual rental or booking screenshot when available.", "/images/rental-booking.jpg.jpg"],
+  ["Payment", "Add the actual payment screenshot when available.", "/images/payment.jpg"],
+  ["Confirmation", "Add the actual confirmation screenshot when available.", "/images/confirmation.jpg"],
+  ["Dashboard/Admin", "Add the actual dashboard or admin screenshot when available.", "/images/dashboard-admin.jpg"],
 ];
 
 function SectionHeading({ eyebrow, title }: { eyebrow?: string; title: string }) {
@@ -190,22 +181,11 @@ export default function DareAdeboyeInnovationHubCaseStudy() {
                     width={600}
                     height={400}
                     className="rounded-2xl object-cover w-full h-auto"
-                    /
-                ):(
-                    <AssetNotice title={title} description={description}/>
-                ){"}"}
+                  />
+                ) : (
+                  <AssetNotice title={title} description={description} />
+                )}
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-6xl px-6 py-20 sm:py-28">
-        <div className="grid gap-12 lg:grid-cols-12 lg:gap-20">
-          <SectionHeading title="Technology Behind the Platform" />
-          <div className="grid gap-px overflow-hidden rounded-2xl border border-[#21262D] bg-[#21262D] sm:grid-cols-2 lg:col-span-7 lg:col-start-6">
-            {technologies.map(([label, value]) => (
-              <div key={label} className="bg-[#161B22] p-5"><dt className="font-mono text-[10px] uppercase tracking-widest text-[#9CA3AF]">{label}</dt><dd className="mt-2 text-sm text-white">{value}</dd></div>
             ))}
           </div>
         </div>
@@ -225,10 +205,6 @@ export default function DareAdeboyeInnovationHubCaseStudy() {
 
       <section className="mx-auto max-w-6xl px-6 py-20 sm:py-28">
         <div className="mx-auto max-w-3xl text-center"><SectionHeading title="The Result" /><p className="mt-6 text-base leading-relaxed text-[#E5E7EB]/85">The project provides Dare Adeboye Innovation Hub with a centralized digital experience for workspace rental, allowing users to discover available spaces, initiate rentals, and complete payments online.</p></div>
-      </section>
-
-      <section className="border-y border-[#21262D] bg-[#0D1117]">
-        <div className="mx-auto max-w-6xl px-6 py-20 sm:py-28"><SectionHeading title="Project Gallery" /><div className="mt-12 grid gap-4 md:grid-cols-12">{visualSections.map(([title, description], index) => <div key={`gallery-${title}`} className={index % 3 === 0 ? "md:col-span-7" : "md:col-span-5"}><AssetNotice title={title} description={description} /></div>)}</div></div>
       </section>
 
       <section className="mx-auto max-w-6xl px-6 pt-20 sm:pt-28">
